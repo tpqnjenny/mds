@@ -10,24 +10,22 @@
 </head>
 <body>
   <div id="skip-menu" class="skip">
-    <a href="#topmenu">메뉴바로가기</a>
+    <a href="#quick">메뉴바로가기</a>
   </div>
-  <header>
-    <ul id="#topmenu" class="topmenu">
-      <li class="menubar"><a href="#">
-        <img src="img/mds_menubar_down.png" alt="menubar">
-      </a></li>
-      <li class="mario show"><a href="#">
-        <img src="img/mario.png" alt="mario">
-      </a></li>
-      <li class="kirby show"><a href="#">
-        <img src="img/kirby.png" alt="kirby">
-      </a></li>
-      <li class="pokemon show"><a href="#">
-        <img src="img/pokemon.png" alt="pokemon">
-      </a></li>
-    </ul>
-  </header>
+  <div id="quick">
+    <div class="mquick mquick1">
+      <a><img src="img/mds_menubar_down.png" alt="menubar" /></a>
+    </div>
+    <div class="mquick mquick2">
+      <a href="../mario/mario.html"><img src="img/mario.png" alt="mario" /></a>
+    </div>
+    <div class="mquick mquick3">
+      <a href="../kirby/kirby.html"><img src="img/kirby.png" alt="kirby" /></a>
+    </div>
+    <div class="mquick mquick4">
+      <a href="../pokemon/pokemon.html"><img src="img/pokemon.png" alt="pokemon" /></a>
+    </div>
+  </div>
   <section class="cf">
     <div id="page1" class="page">
       <h1 class="logo"><img src="img/page1/logo.png" alt="logo"></h1>
@@ -238,9 +236,45 @@
       </div>
     </div>
   </section>
+  <script>
+    window.addEventListener("click", spriteEffect);
+
+    function spriteEffect(e) {
+      const width = 400;
+      const height = 400;
+      const cols = 6;
+      const rows = 5;
+      let current = 0;
+      const intervalGap = 600 / 25;
+
+      const sprite = document.createElement("div");
+      sprite.style.position = "absolute";
+      sprite.style.left = e.clientX + "px";
+      sprite.style.top = e.clientY + "px";
+      sprite.style.backgroundImage = 'url("img/click_ani.png")';
+      sprite.style.width = width + "px";
+      sprite.style.height = height + "px";
+      sprite.style.backgroundSize = `${width * cols}px ${height * rows}px`;
+      sprite.style.transform = `translate(-50%, -50%)`;
+      document.body.append(sprite);
+
+      const intervalId = setInterval(() => {
+        const currentCol = current % cols; // 나머지 구하기
+        const currentRow = Math.floor(current / cols); // 몫 구하기
+
+        sprite.style.backgroundPosition = `${-width * currentCol}px ${
+          -height * currentRow
+        }px`;
+
+        if (++current % (rows * cols) === 0) {
+          clearInterval(intervalId);
+          document.body.removeChild(sprite);
+        }
+      }, intervalGap);
+    }
+  </script>
   <script src="js/jquery-1.11.2.min.js"></script>
   <script src="js/index.js"></script>
-  <script src="js/click_ani.js"></script>
   <script src="js/animation.js"></script>
   <script src="js/fullpage_scroll.js"></script>
 </body>
