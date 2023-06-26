@@ -1,3 +1,4 @@
+// 풀 페이지 가로 스크롤
 $(function(){
   let d_width = 0;
   let d_height = 0;
