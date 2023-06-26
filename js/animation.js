@@ -1,4 +1,5 @@
 $(function(){
+  // balloon 효과 및 cursor 움직임
   $("#page2").on("mouseenter", function(){
     $(".balloon2").addClass("balloon2_ani");
     $(".cursor").animate({right : '22.5%'}, 1500, function(){
@@ -17,7 +18,8 @@ $(function(){
   $("#page5").on("mouseenter", function(){
     $(".balloon5").addClass("balloon5_ani");
   });
-
+  
+  // PAGE 5 - ENDING 글
   $("#page5").on("mouseenter", function(){
     $(".eng").addClass("ani_fadeIn delay_2s");
     $(".kor").addClass("ani_fadeIn delay_5s");
