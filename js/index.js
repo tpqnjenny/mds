@@ -1,5 +1,5 @@
 $(function(){
-  // HEADER
+  // HEADER - MENU
   $(".menubar").on("mouseenter", function(){
     $(".topmenu li").stop().animate({top: 0, opacity: 1}, 500);
     $(this).find("img").attr("src", "../img/mds_menubar_up.png");
@@ -9,13 +9,13 @@ $(function(){
     $(".menubar>a>img").attr("src", "../img/mds_menubar_down.png");
   });
 
-  // PAGE 1
-  $(".door").on("dblclick" , function(){
+  // PAGE 1 - 문 열리는 효과
+  $(".door").on("click" , function(){
     $(this).toggleClass("open");
     $(".logo").addClass("show");
   });
 
-  // PAGE 2
+  // PAGE 2 - 게시판 나타나는 효과
   $(".box").hide();
   $(".poster, .cursor").on("click", function(){
     $(".box").stop().fadeIn();
@@ -24,7 +24,7 @@ $(function(){
     $(this).stop().fadeOut();
   });
 
-  // PAGE 3
+  // PAGE 3 - 캐릭터 소개
   $(".char_introduce").stop().hide();
   $(".char_list>li").on("click", function(){
     const i = $(".char_list li").index(this);
@@ -34,7 +34,7 @@ $(function(){
     $(".hole").css("transform", "scale(1)");
   });
 
-  // PAGE 4
+  // PAGE 4 - 게시판 나타나는 효과
   $(".ycursor_click").stop().hide();
   $(".game_info").hide();
   $(".switch, .ycursor").on("click", function(){
